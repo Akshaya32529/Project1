@@ -12,11 +12,12 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+const mongoURI = process.env.MONGO_URI || process.env.DB_URL || 'mongodb://localhost:27017/wholesale';
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected'))
+.then(() => console.log('MongoDB connected to:', mongoURI.replace(/:[^:@]{1,}@/, ':****@')))
 .catch(err => console.log(err));
 
 // Routes

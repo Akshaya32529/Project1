@@ -5,9 +5,10 @@ const User = require('./models/User');
 dotenv.config();
 
 async function run() {
-  console.log('Connecting to MongoDB at:', process.env.MONGO_URI);
+  const mongoURI = process.env.MONGO_URI || process.env.DB_URL || 'mongodb://localhost:27017/wholesale';
+  console.log('Connecting to MongoDB at:', mongoURI.replace(/:[^:@]{1,}@/, ':****@'));
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

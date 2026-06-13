@@ -6,7 +6,7 @@ const adminCredentials = {
 async function run() {
   try {
     console.log('Logging in as admin...');
-    const loginRes = await fetch('http://https://project1-1-1ie9.onrender.com/api/auth/login', {
+    const loginRes = await fetch('https://project1-1-1ie9.onrender.com/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(adminCredentials)
@@ -20,7 +20,7 @@ async function run() {
     console.log('Login successful.');
 
     console.log('Fetching users list...');
-    const usersRes = await fetch('http://https://project1-1-1ie9.onrender.com/api/auth/users', {
+    const usersRes = await fetch('https://project1-1-1ie9.onrender.com/api/auth/users', {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -36,7 +36,7 @@ async function run() {
     const staffUser = users.find(u => u.role === 'staff');
     if (!staffUser) {
       console.log('No staff member found in DB to delete. Creating one first...');
-      const createRes = await fetch('http://https://project1-1-1ie9.onrender.com/api/auth/register', {
+      const createRes = await fetch('https://project1-1-1ie9.onrender.com/api/auth/register', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ async function run() {
       }
       console.log('Temp staff created.');
       // Re-fetch users
-      const reFetch = await fetch('http://https://project1-1-1ie9.onrender.com/api/auth/users', {
+      const reFetch = await fetch('https://project1-1-1ie9.onrender.com/api/auth/users', {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -71,7 +71,7 @@ async function run() {
 
 async function attemptDelete(userId, token) {
   console.log(`Attempting to delete user with ID: ${userId}...`);
-  const deleteRes = await fetch(`http://https://project1-1-1ie9.onrender.com/api/auth/users/${userId}`, {
+  const deleteRes = await fetch(`https://project1-1-1ie9.onrender.com/api/auth/users/${userId}`, {
     method: 'DELETE',
     headers: { 'Authorization': `Bearer ${token}` }
   });
