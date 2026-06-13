@@ -13,7 +13,7 @@ async function run() {
   try {
     console.log('Testing Admin Login using fetch...');
     
-    const loginRes = await fetch('http://localhost:5000/api/auth/login', {
+    const loginRes = await fetch('http://https://project1-1-1ie9.onrender.com/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(adminCredentials)
@@ -31,7 +31,7 @@ async function run() {
     console.log('\nTesting User Creation (via Admin token)...');
     console.log(`Creating user: "${testUser.username}" with role "${testUser.role}"...`);
     
-    const registerRes = await fetch('http://localhost:5000/api/auth/register', {
+    const registerRes = await fetch('http://https://project1-1-1ie9.onrender.com/api/auth/register', {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ async function run() {
     console.log('User creation successful! Response:', registerResponse);
 
     console.log('\nTesting User Listing...');
-    const usersRes = await fetch('http://localhost:5000/api/auth/users', {
+    const usersRes = await fetch('http://https://project1-1-1ie9.onrender.com/api/auth/users', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`
