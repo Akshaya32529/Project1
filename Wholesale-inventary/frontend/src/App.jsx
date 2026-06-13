@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const API_BASE = localStorage.getItem('apiBase') && localStorage.getItem('apiBase') !== 'http://localhost:5000/api' 
-  ? localStorage.getItem('apiBase') 
-  : 'https://project1-1-1ie9.onrender.com/api';
+const defaultApiBase = import.meta.env.VITE_API_BASE || 'https://project1-1-1ie9.onrender.com/api';
+const savedApiBase = typeof window !== 'undefined' ? localStorage.getItem('apiBase') : '';
+const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+const API_BASE = isLocalhost
+  ? (savedApiBase && !/localhost|127\.0\.0\.1/.test(savedApiBase) ? savedApiBase : 'http://localhost:5000/api')
+  : (savedApiBase && !/localhost|127\.0\.0\.1/.test(savedApiBase) ? savedApiBase : defaultApiBase);
 
 const emptyProductFilters = { search: '', category: '', barcode: '', status: '', page: 1 };
 const emptyInvoiceFilters = { status: '', customer: '', page: 1 };
