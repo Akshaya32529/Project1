@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const API_BASE = localStorage.getItem('apiBase') || 'http://localhost:5000/api';
+const API_BASE = localStorage.getItem('apiBase') || 
+  import.meta.env.VITE_API_URL || 
+  (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+    ? 'http://localhost:5000/api' 
+    : 'https://project1-1-1ie9.onrender.com/api');
 
 const emptyProductFilters = { search: '', category: '', barcode: '', status: '', page: 1 };
 const emptyInvoiceFilters = { status: '', customer: '', page: 1 };
