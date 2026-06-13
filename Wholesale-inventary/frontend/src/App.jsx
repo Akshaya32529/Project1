@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const defaultApiBase = import.meta.env.VITE_API_BASE || 'https://project1-1-1ie9.onrender.com/api';
+const defaultApiBase = import.meta.env.VITE_API_BASE || 'https://project1-5-ihkm.onrender.com/api';
 const savedApiBase = typeof window !== 'undefined' ? localStorage.getItem('apiBase') : '';
 const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 const API_BASE = isLocalhost
