@@ -5,7 +5,7 @@ const savedApiBase = typeof window !== 'undefined' ? localStorage.getItem('apiBa
 const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 const API_BASE = isLocalhost
   ? (savedApiBase && !/localhost|127\.0\.0\.1/.test(savedApiBase) ? savedApiBase : 'http://localhost:5000/api')
-  : (savedApiBase && !/localhost|127\.0\.0\.1/.test(savedApiBase) ? savedApiBase : defaultApiBase);
+  : defaultApiBase;
 
 const emptyProductFilters = { search: '', category: '', barcode: '', status: '', page: 1 };
 const emptyInvoiceFilters = { status: '', customer: '', page: 1 };
