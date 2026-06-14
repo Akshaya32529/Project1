@@ -21,9 +21,13 @@ const allowedOrigins = [
   'https://project1-lovat-delta.vercel.app',
 ];
 
+function isAllowedOrigin(origin) {
+  return allowedOrigins.includes(origin) || /^https:\/\/project1-[a-z0-9-]+\.vercel\.app$/i.test(origin);
+}
+
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || isAllowedOrigin(origin)) {
       return callback(null, true);
     }
 

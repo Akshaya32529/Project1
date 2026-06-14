@@ -1,18 +1,21 @@
 # Wholesale Inventory and Billing ERP
 
-A full-stack modern web application built with the MERN stack (MongoDB, Express, React, Node.js) to handle wholesale inventory management, barcode billing, and operational analytics. 
+A full-stack modern web application built with the MERN stack (MongoDB, Express, React, Node.js) to handle wholesale inventory management, barcode billing, and operational analytics.
 
 ## Features
 
 ### Authentication & Authorization
+
 - **Role-Based Access Control**: Separate views and permissions for `admin` and `staff` roles.
 - **Secure Authentication**: JWT-based secure sign-in and user registration.
 
 ### Dashboard & Analytics
+
 - **Live Dashboard**: View total products, revenue, invoice counts, and low-stock warnings.
 - **Sales Analytics**: Visual representation of monthly sales trends and top-selling products.
 
 ### Product & Inventory Management
+
 - **Catalog Management**: Add, edit, or remove products with names, categories, descriptions, and pricing.
 - **Stock Tracking**: Automatic stock deduction on sales and visual badges for stock health.
 - **Low Stock Alerts**: Define custom low-stock thresholds for each item to monitor replenishment needs.
@@ -20,12 +23,14 @@ A full-stack modern web application built with the MERN stack (MongoDB, Express,
 - **Batch Import**: Bulk import inventory data using CSV files.
 
 ### Billing & Invoicing
+
 - **Point of Sale (POS)**: Fast barcode billing interface for counter sales.
 - **Invoice Generation**: Automatically generate and store transaction records.
 - **PDF Export**: Download customer invoices instantly as PDF files.
 - **Payment Status**: Track and update invoice payment statuses (Paid/Unpaid).
 
 ### Security & Auditing
+
 - **Audit Logs**: (Admin Only) Track system-wide events including creation, updates, and deletion of records with exact timestamps and actor details.
 
 ## Tech Stack
@@ -44,6 +49,7 @@ A full-stack modern web application built with the MERN stack (MongoDB, Express,
 ## Installation & Setup
 
 ### Prerequisites
+
 - Node.js
 - MongoDB running locally or a MongoDB Atlas URI
 
@@ -53,8 +59,10 @@ A full-stack modern web application built with the MERN stack (MongoDB, Express,
 cd backend
 npm install
 ```
+
 Ensure your `backend/.env` is configured correctly (e.g. `MONGO_URI`, `JWT_SECRET`, `PORT`).
 Start the server:
+
 ```bash
 npm start
 # or for development:
@@ -67,7 +75,9 @@ npm run dev
 cd frontend
 npm install
 ```
+
 Start the frontend application:
+
 ```bash
 npm run dev
 ```
