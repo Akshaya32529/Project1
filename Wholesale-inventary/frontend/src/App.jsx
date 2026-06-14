@@ -1,11 +1,17 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const defaultApiBase = import.meta.env.VITE_API_BASE || 'https://project1-5-ihkm.onrender.com/api';
+const fallbackApiBase = 'https://project1-5-ihkm.onrender.com/api';
+const rawApiBase = typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE
+  ? String(import.meta.env.VITE_API_BASE).trim()
+  : '';
+const normalizedApiBase = rawApiBase && /^https?:\/\//i.test(rawApiBase)
+  ? rawApiBase.replace(/\/+$/, '')
+  : fallbackApiBase;
 const savedApiBase = typeof window !== 'undefined' ? localStorage.getItem('apiBase') : '';
 const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 const API_BASE = isLocalhost
-  ? (savedApiBase && !/localhost|127\.0\.0\.1/.test(savedApiBase) ? savedApiBase : 'http://localhost:5000/api')
-  : defaultApiBase;
+  ? (savedApiBase && !/localhost|127\.0\.0\.1/.test(savedApiBase) ? savedApiBase.replace(/\/+$/, '') : 'http://localhost:5000/api')
+  : normalizedApiBase;
 
 const emptyProductFilters = { search: '', category: '', barcode: '', status: '', page: 1 };
 const emptyInvoiceFilters = { status: '', customer: '', page: 1 };
