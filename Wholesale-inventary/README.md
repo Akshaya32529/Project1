@@ -73,4 +73,4 @@ npm run dev
 ```
 
 Access the application in your browser (usually at `http://localhost:5174/`).
-The frontend uses `https://project1-1-1ie9.onrender.com/api` by default, so start the backend first from the `backend/` folder.
+The frontend uses `https://project1-6-y1bz.onrender.com/api` by default, so start the backend first from the `backend/` folder.

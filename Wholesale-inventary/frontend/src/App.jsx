@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const fallbackApiBase = 'https://project1-5-ihkm.onrender.com/api';
+const fallbackApiBase = 'https://project1-6-y1bz.onrender.com/api';
 const normalizeApiBase = (value, fallback = fallbackApiBase) => {
   const apiBase = String(value || '').trim().replace(/\/+$/, '');
   if (!/^https?:\/\//i.test(apiBase)) return fallback;

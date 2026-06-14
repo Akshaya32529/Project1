@@ -16,10 +16,10 @@ npm run dev
 
 Open the Vite URL, usually `http://localhost:5173`.
 
-The app uses `https://project1-5-ihkm.onrender.com/api` by default. To change it from the browser console:
+The app uses `https://project1-6-y1bz.onrender.com/api` by default. To change it from the browser console:
 
 ```js
-localStorage.setItem("apiBase", "https://project1-5-ihkm.onrender.com/api");
+localStorage.setItem("apiBase", "https://project1-6-y1bz.onrender.com/api");
 ```
 
 ## Features
