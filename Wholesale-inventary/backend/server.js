@@ -34,14 +34,33 @@ app.get('/api/health', (req, res) => {
 });
 
 // Routes
-app.use('/api/auth', require('./api/userapi'));
-app.use('/api/products', require('./api/productapi'));
-app.use('/api/invoices', require('./api/invoiceapi'));
-app.use('/api/analytics', require('./api/analyticsapi'));
-app.use('/api/dashboard', require('./api/dashboardapi'));
-app.use('/api/audit-logs', require('./api/auditapi'));
-app.use('/api/suppliers', require('./api/supplierapi'));
-app.use('/api/purchases', require('./api/purchaseapi'));
+const authRoutes = require('./api/userapi');
+const productRoutes = require('./api/productapi');
+const invoiceRoutes = require('./api/invoiceapi');
+const analyticsRoutes = require('./api/analyticsapi');
+const dashboardRoutes = require('./api/dashboardapi');
+const auditRoutes = require('./api/auditapi');
+const supplierRoutes = require('./api/supplierapi');
+const purchaseRoutes = require('./api/purchaseapi');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/invoices', invoiceRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/audit-logs', auditRoutes);
+app.use('/api/suppliers', supplierRoutes);
+app.use('/api/purchases', purchaseRoutes);
+
+// Backward-compatible routes for frontends built with the API origin but no /api suffix.
+app.use('/auth', authRoutes);
+app.use('/products', productRoutes);
+app.use('/invoices', invoiceRoutes);
+app.use('/analytics', analyticsRoutes);
+app.use('/dashboard', dashboardRoutes);
+app.use('/audit-logs', auditRoutes);
+app.use('/suppliers', supplierRoutes);
+app.use('/purchases', purchaseRoutes);
 
 // Serve static files for uploads
 app.use('/uploads', express.static('uploads'));

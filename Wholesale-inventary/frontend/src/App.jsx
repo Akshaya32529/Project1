@@ -1,16 +1,19 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const fallbackApiBase = 'https://project1-5-ihkm.onrender.com/api';
+const normalizeApiBase = (value, fallback = fallbackApiBase) => {
+  const apiBase = String(value || '').trim().replace(/\/+$/, '');
+  if (!/^https?:\/\//i.test(apiBase)) return fallback;
+  return /\/api$/i.test(apiBase) ? apiBase : `${apiBase}/api`;
+};
 const rawApiBase = typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE
   ? String(import.meta.env.VITE_API_BASE).trim()
   : '';
-const normalizedApiBase = rawApiBase && /^https?:\/\//i.test(rawApiBase)
-  ? rawApiBase.replace(/\/+$/, '')
-  : fallbackApiBase;
+const normalizedApiBase = normalizeApiBase(rawApiBase);
 const savedApiBase = typeof window !== 'undefined' ? localStorage.getItem('apiBase') : '';
 const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 const API_BASE = isLocalhost
-  ? (savedApiBase && !/localhost|127\.0\.0\.1/.test(savedApiBase) ? savedApiBase.replace(/\/+$/, '') : 'http://localhost:5000/api')
+  ? (savedApiBase && !/localhost|127\.0\.0\.1/.test(savedApiBase) ? normalizeApiBase(savedApiBase) : 'http://localhost:5000/api')
   : normalizedApiBase;
 
 const emptyProductFilters = { search: '', category: '', barcode: '', status: '', page: 1 };
